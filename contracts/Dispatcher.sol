@@ -20,3 +20,4 @@ contract Dispatcher is Owned {
         currentMarketAddress = _address;
     }
 }
+
