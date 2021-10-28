@@ -68,13 +68,13 @@ contract SellOffer is Object {
         return mySellOffers[msg.sender].length;
     }
 
-    /// @notice Get offer of sale by index
+    // @notice Get offer of sale by index
     function getSellOffer(uint index) constant returns (uint time, address from, uint256 amount, uint256 price) {
         sellOffer memory offer = sellOffers[index];
         return (offer.time, offer.from, offer.amount, offer.price);
     }
 
-    /// @notice Anybody can buy some tokens by offer index if he send some founds to this contract
+    // @notice Anybody can buy some tokens by offer index if he send some founds to this contract
     function buy(uint index) payable {
         sellOffer memory offer = sellOffers[index];
         uint256 sum = offer.amount * offer.price;
@@ -97,7 +97,7 @@ contract SellOffer is Object {
         }
     }
 
-    /// @notice Anybody can cancel only his offers of sale. Owner can cancel all offers
+    // @notice Anybody can cancel only his offers of sale. Owner can cancel all offers
     function cancel(uint index) {
         sellOffer memory offer = sellOffers[index];
         if (offer.from == msg.sender || msg.sender == owner) {
@@ -130,6 +130,6 @@ contract SellOffer is Object {
         }
     }
 
-    /// @notice Fallback function of contract to receive founds
+    // @notice Fallback function of contract to receive founds
     function() payable {}
 }
